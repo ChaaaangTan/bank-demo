@@ -1,7 +1,7 @@
 name: Deploy React App
 on:
   push:
-    branches: ["main"] # 每次你推送到 main 分支时自动触发
+    branches: ["main"]
 permissions:
   contents: read
   pages: write
@@ -16,14 +16,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-  
+          # 这里删除了 cache: 'npm'，因为你没有 lock 文件
       - name: Install dependencies
-        run: npm install --no-package-lock
+        # 使用 --no-package-lock 强制安装
+        run: npm install --no-package-lock 
       - name: Build
-        run: npm run build # 这步会将 .tsx 编译成 .js 并放入 dist 文件夹
+        run: npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist # 告诉 GitHub 部署打包后的 dist 目录
+          path: ./dist
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
