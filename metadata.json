@@ -1,0 +1,8 @@
+{
+  "name": "HK Bank Demo",
+  "description": "A mobile banking demo application for Hong Kong, featuring multi-language support, wealth management UI, and AI assistance.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
