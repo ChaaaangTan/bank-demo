@@ -1,0 +1,29 @@
+name: Deploy React App
+on:
+  push:
+    branches: ["main"] # 每次你推送到 main 分支时自动触发
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - name: Install dependencies
+        run: npm install
+      - name: Build
+        run: npm run build # 这步会将 .tsx 编译成 .js 并放入 dist 文件夹
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist # 告诉 GitHub 部署打包后的 dist 目录
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
