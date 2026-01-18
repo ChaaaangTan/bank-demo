@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [react()],
   // 'base' is crucial for GitHub Pages. It ensures assets use relative paths (e.g. "./assets/...")
   // instead of absolute paths (e.g. "/assets/..."), allowing the app to run in a subdirectory.
-  base: './',
+  base: '/bank-demo/',
   define: {
     // Prevents "ReferenceError: process is not defined" when running in the browser.
     // NOTE: For the API key to work in production, you must configure your build pipeline
