@@ -79,5 +79,6 @@ export const Icons = {
   ArrowRightLeft: ArrowRightLeft,
   PieChart: PieChart,
   Banknote: Banknote,
-  FileText: FileText
+  FileText: FileText,
+  Globe: Globe
 };
